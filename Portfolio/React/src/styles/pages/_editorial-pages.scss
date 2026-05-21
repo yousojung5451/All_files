@@ -1,0 +1,364 @@
+@use "../abstracts" as *;
+
+.catalog {
+  background: $paper;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(24px, 3vw, 44px);
+  }
+
+  @include respond(tablet) {
+    &__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @include respond(mobile) {
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.catalog-card {
+  figure {
+    aspect-ratio: 1 / 1.12;
+    margin: 0;
+    overflow: hidden;
+    background: $sand;
+  }
+
+  img {
+    @include cover-media;
+    transition: transform 640ms ease;
+  }
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba($ink, 0.16);
+    margin-top: 18px;
+  }
+
+  p,
+  h3 {
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  p {
+    color: $soft-ink;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  h3 {
+    font-family: $serif;
+    font-size: clamp(20px, 2vw, 30px);
+    font-weight: 400;
+    text-align: right;
+  }
+
+  &:hover img {
+    transform: scale(1.055);
+  }
+}
+
+.mood-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  padding-top: 0;
+  background: $dark;
+
+  &__item {
+    position: relative;
+    min-height: 420px;
+    overflow: hidden;
+
+    img {
+      @include cover-media;
+      filter: saturate(0.86);
+      transition: transform 800ms ease;
+    }
+
+    h3 {
+      position: absolute;
+      left: 24px;
+      bottom: 24px;
+      margin: 0;
+      color: $paper;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    &:hover img {
+      transform: scale(1.06);
+    }
+  }
+
+  @include respond(tablet) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include respond(mobile) {
+    grid-template-columns: 1fr;
+
+    &__item {
+      min-height: 300px;
+    }
+  }
+}
+
+.journal {
+  background: $ivory;
+}
+
+.journal-item {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: clamp(22px, 4vw, 72px);
+  padding: clamp(32px, 5vw, 72px) 0;
+  border-bottom: 1px solid $line;
+
+  > span {
+    color: rgba($ink, 0.42);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0 0 14px;
+    color: $soft-ink;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    @include serif-title(clamp(42px, 7vw, 96px));
+  }
+
+  strong {
+    display: block;
+    max-width: 560px;
+    margin-top: 22px;
+    color: $soft-ink;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.8;
+  }
+
+  @include respond(mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.wide-image {
+  height: min(72vh, 720px);
+  overflow: hidden;
+  background: $dark;
+
+  img {
+    @include cover-media;
+  }
+}
+
+.about-editorial {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) 1fr;
+  gap: clamp(36px, 7vw, 112px);
+  align-items: end;
+  background: $paper;
+
+  &__copy {
+    h2 {
+      @include serif-title(clamp(44px, 6vw, 88px));
+    }
+
+    p:not(.section-kicker) {
+      max-width: 440px;
+      margin: 28px 0 0;
+      color: $soft-ink;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+  }
+
+  &__values {
+    display: grid;
+    border-top: 1px solid $line;
+
+    span {
+      display: block;
+      padding: 24px 0;
+      border-bottom: 1px solid $line;
+      font-family: $serif;
+      font-size: clamp(28px, 4vw, 56px);
+      text-transform: uppercase;
+    }
+  }
+
+  @include respond(tablet) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.detail-page {
+  background: $paper;
+}
+
+.product-detail {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(320px, 1.1fr) minmax(320px, 0.9fr);
+  min-height: 100vh;
+  padding: clamp(96px, 11vw, 150px) clamp(24px, 5vw, 88px) clamp(60px, 8vw, 112px);
+  gap: clamp(32px, 6vw, 92px);
+  align-items: center;
+  background: linear-gradient(90deg, $paper, $ivory);
+
+  &__image {
+    aspect-ratio: 1 / 1.08;
+    margin: 0;
+    overflow: hidden;
+    background: $sand;
+
+    img {
+      @include cover-media;
+    }
+  }
+
+  &__content {
+    p {
+      margin: 0 0 18px;
+      color: $soft-ink;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      @include serif-title(clamp(54px, 7vw, 104px));
+    }
+
+    > span {
+      display: block;
+      max-width: 470px;
+      margin-top: 30px;
+      color: $soft-ink;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+  }
+
+  @include respond(tablet) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+
+  button,
+  a {
+    border: 1px solid rgba($ink, 0.34);
+    padding: 13px 18px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition:
+      background 220ms ease,
+      color 220ms ease;
+  }
+
+  button {
+    color: $paper;
+    background: $ink;
+  }
+
+  a:hover,
+  button:hover {
+    color: $paper;
+    background: $clay;
+  }
+}
+
+.detail-related {
+  background: $dark;
+}
+
+.story-detail {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  overflow: hidden;
+  color: $paper;
+  background: $dark;
+
+  &__media,
+  &__media img,
+  &__overlay {
+    position: absolute;
+    inset: 0;
+  }
+
+  &__media {
+    z-index: -2;
+
+    img {
+      @include cover-media;
+      filter: saturate(0.86);
+    }
+  }
+
+  &__overlay {
+    z-index: -1;
+    background:
+      linear-gradient(90deg, rgba($dark, 0.9), rgba($dark, 0.48)),
+      rgba($dark, 0.12);
+  }
+
+  &__content {
+    position: absolute;
+    left: clamp(24px, 8vw, 140px);
+    bottom: clamp(48px, 9vw, 120px);
+    width: min(620px, calc(100vw - 48px));
+
+    p {
+      margin: 0 0 18px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      @include serif-title(clamp(54px, 8vw, 112px));
+    }
+
+    > span,
+    strong {
+      display: block;
+      color: rgba($paper, 0.74);
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.85;
+    }
+
+    > span {
+      margin-top: 26px;
+    }
+
+    strong {
+      max-width: 520px;
+      margin: 18px 0 34px;
+    }
+  }
+}

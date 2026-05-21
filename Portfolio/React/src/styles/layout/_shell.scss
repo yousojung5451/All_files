@@ -1,0 +1,45 @@
+@use "../abstracts" as *;
+
+.site-shell {
+  min-height: 100vh;
+  overflow: hidden;
+  background: $ivory;
+}
+
+.section-pad {
+  padding: clamp(84px, 9vw, 150px) clamp(24px, 4vw, 72px);
+
+  @include respond(tablet) {
+    padding: 76px 24px;
+  }
+}
+
+.section-dark {
+  color: $paper;
+  background: $dark;
+}
+
+.section-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: clamp(36px, 5vw, 70px);
+
+  h2 {
+    @include serif-title(clamp(42px, 5vw, 74px));
+  }
+
+  @include respond(mobile) {
+    align-items: flex-end;
+    margin-bottom: 30px;
+  }
+}
+
+.section-kicker {
+  margin: 0 0 18px;
+  color: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}

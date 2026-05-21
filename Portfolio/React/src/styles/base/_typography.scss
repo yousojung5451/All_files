@@ -1,0 +1,9 @@
+@use "../abstracts" as *;
+
+html,
+body {
+  color: $ink;
+  font-family: $sans;
+  letter-spacing: 0;
+  background: $ivory;
+}

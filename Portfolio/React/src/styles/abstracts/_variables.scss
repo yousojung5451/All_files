@@ -1,0 +1,20 @@
+$ivory: #eee8dc;
+$warm-ivory: #e7dece;
+$paper: #f6f1e8;
+$sand: #d7c7b1;
+$clay: #a68f73;
+$ink: #191713;
+$dark: #11100d;
+
+$soft-ink: rgba($ink, 0.64);
+$line: rgba($ink, 0.18);
+$shadow-soft: 0 18px 34px rgba($ink, 0.12);
+
+$serif: Georgia, "Times New Roman", serif;
+$sans: Arial, "Helvetica Neue", sans-serif;
+
+$breakpoints: (
+  tablet-wide: 1100px,
+  tablet: 980px,
+  mobile: 560px,
+);

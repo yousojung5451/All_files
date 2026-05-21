@@ -1,0 +1,226 @@
+@use "../abstracts" as *;
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  height: 100vh;
+  min-height: 640px;
+  overflow: hidden;
+  background: $warm-ivory;
+
+  &__media,
+  &__video,
+  &__fallback,
+  &__veil {
+    position: absolute;
+    inset: 0;
+  }
+
+  &__media {
+    z-index: -3;
+  }
+
+  &__video,
+  &__fallback {
+    @include cover-media;
+    object-position: center right;
+  }
+
+  &__fallback {
+    animation: imageDrift 9s ease-in-out infinite alternate;
+  }
+
+  &__veil {
+    z-index: -1;
+    background:
+      linear-gradient(90deg, rgba($ivory, 0.99) 0%, rgba($ivory, 0.98) 38%, rgba($ivory, 0.58) 58%, rgba($ivory, 0.08) 78%),
+      radial-gradient(circle at 48% 28%, rgba(#fffbf4, 0.42), transparent 36%);
+  }
+
+  &__content {
+    position: absolute;
+    left: clamp(34px, 12.5vw, 220px);
+    top: 50%;
+    z-index: 3;
+    width: min(520px, 58vw);
+    transform: translateY(-44%);
+  }
+
+  &__eyebrow {
+    margin: 0 0 34px;
+    color: $soft-ink;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    @include serif-title(clamp(58px, 7vw, 118px));
+  }
+
+  &__copy {
+    margin: 42px 0 0;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.75;
+  }
+
+  &__cta {
+    margin-top: 42px;
+  }
+
+  &__controls {
+    right: clamp(24px, 4vw, 72px);
+    bottom: 42px;
+  }
+
+  &__indicator {
+    position: absolute;
+    left: clamp(34px, 4vw, 72px);
+    bottom: 46px;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    color: rgba($ink, 0.58);
+    font-size: 16px;
+
+    strong {
+      color: $ink;
+      font-weight: 700;
+    }
+
+    i {
+      display: block;
+      width: 64px;
+      height: 1px;
+      background: rgba($ink, 0.34);
+    }
+  }
+
+  &__dots {
+    position: absolute;
+    left: clamp(22px, 3.4vw, 52px);
+    top: 50%;
+    z-index: 4;
+    display: grid;
+    gap: 18px;
+    transform: translateY(-20%);
+
+    span {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: rgba($ink, 0.24);
+    }
+
+    .is-active {
+      background: $ink;
+    }
+  }
+
+  @include respond(tablet) {
+    min-height: 720px;
+
+    &__fallback,
+    &__video {
+      object-position: 62% center;
+    }
+
+    &__veil {
+      background:
+        linear-gradient(180deg, rgba($ivory, 0.96) 0%, rgba($ivory, 0.86) 42%, rgba($ivory, 0.24) 100%),
+        linear-gradient(90deg, rgba($ivory, 0.94), rgba($ivory, 0.22));
+    }
+
+    &__content {
+      left: 32px;
+      top: 22%;
+      width: min(430px, calc(100vw - 64px));
+      transform: none;
+    }
+
+    &__eyebrow {
+      margin-bottom: 18px;
+      font-size: 11px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 11vw, 68px);
+    }
+
+    &__copy {
+      margin-top: 24px;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    &__cta {
+      min-width: 220px;
+      margin-top: 24px;
+      font-size: 12px;
+    }
+
+    &__dots {
+      display: none;
+    }
+
+    &__indicator {
+      left: 32px;
+      right: 32px;
+      bottom: 80px;
+      justify-content: flex-start;
+      gap: 12px;
+      font-size: 12px;
+
+      i {
+        width: 44px;
+      }
+    }
+
+    &__controls {
+      left: 32px;
+      right: auto;
+      bottom: 24px;
+    }
+  }
+
+  @include respond(mobile) {
+    min-height: 680px;
+
+    &__fallback,
+    &__video {
+      object-position: 74% center;
+    }
+
+    &__content {
+      top: 14%;
+      left: 24px;
+      width: calc(100vw - 48px);
+    }
+
+    h1 {
+      max-width: 340px;
+      font-size: clamp(38px, 13vw, 54px);
+    }
+
+    &__copy {
+      max-width: 260px;
+    }
+
+    &__indicator {
+      left: 24px;
+      right: 24px;
+    }
+
+    &__controls {
+      left: 24px;
+      bottom: 22px;
+
+      button {
+        min-width: 74px;
+        padding: 9px 10px;
+      }
+    }
+  }
+}

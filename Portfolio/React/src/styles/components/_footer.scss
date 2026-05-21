@@ -1,0 +1,51 @@
+@use "../abstracts" as *;
+
+.site-footer {
+  display: grid;
+  grid-template-columns: 1.1fr 1.5fr 1fr;
+  gap: 32px;
+  padding: 42px clamp(24px, 4vw, 72px) 30px;
+  border-top: 1px solid $line;
+  color: $ink;
+  background: $ivory;
+  text-transform: uppercase;
+
+  &__brand a {
+    font-size: 22px;
+    font-weight: 800;
+  }
+
+  p {
+    margin: 14px 0 0;
+    color: rgba($ink, 0.54);
+    font-size: 11px;
+  }
+
+  &__nav,
+  &__social {
+    display: flex;
+    gap: clamp(22px, 4vw, 72px);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  &__social {
+    justify-content: flex-end;
+  }
+
+  &__copy {
+    grid-column: 1 / -1;
+    padding-top: 28px;
+    border-top: 1px solid $line;
+  }
+
+  @include respond(tablet) {
+    grid-template-columns: 1fr;
+
+    &__nav,
+    &__social {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+  }
+}

@@ -1,0 +1,75 @@
+@use "../abstracts" as *;
+
+.newsletter {
+  display: grid;
+  grid-template-columns: 1fr minmax(320px, 0.74fr);
+  gap: clamp(32px, 6vw, 110px);
+  align-items: end;
+  background: $ivory;
+
+  h2 {
+    margin: 0 0 14px;
+    font-size: 15px;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin: 0;
+    color: $soft-ink;
+    font-size: 14px;
+  }
+
+  &__form {
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    div {
+      display: flex;
+      border-bottom: 1px solid rgba($ink, 0.48);
+    }
+
+    input {
+      flex: 1;
+      min-width: 0;
+      border: 0;
+      padding: 15px 0;
+      color: $ink;
+      text-transform: uppercase;
+      background: transparent;
+      outline: 0;
+
+      &::placeholder {
+        color: rgba($ink, 0.44);
+      }
+    }
+
+    button {
+      padding: 15px 0 15px 24px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+
+  @include respond(tablet) {
+    grid-template-columns: 1fr;
+  }
+
+  @include respond(mobile) {
+    &__form {
+      div {
+        display: block;
+      }
+
+      button {
+        padding-left: 0;
+      }
+    }
+  }
+}
